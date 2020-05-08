@@ -1,0 +1,114 @@
+<canvas width="400px" height="400px"></canvas>
+
+<script>
+  let screen = document.querySelector('canvas');
+  let brush = screen.getContext('2d');
+  brush.fillStyle = '#000066';
+  brush.fillRect(0, 0, 400, 400);
+
+  function drawCircle(x, y, radio, cor) {
+    brush.fillStyle = cor;
+    brush.beginPath();
+    brush.arc(x, y, radio, 0, 2 * Math.PI);
+    brush.fill();
+  }
+
+
+  function drawFlower(x, y) {
+
+    //circulos externos
+    drawCircle(x + 38, y, 20, '#FFCC00');
+    drawCircle(x + 26, y + 26, 20, '#FF6600');
+    drawCircle(x, y + 38, 20, '#FF3366');
+    drawCircle(x - 26, y + 26, 20, '#FF33CC');
+    drawCircle(x - 38, y, 20, '#FF6699');
+    drawCircle(x - 26, y - 26, 20, '#FF9966');
+    drawCircle(x, y - 38, 20, '#FFCC33');
+    drawCircle(x + 26, y - 26, 20, '#FFFF33');
+
+    //circulo central
+    drawCircle(x, y, 20, '#FF0000');
+    drawCircle(x, y, 18, '#FF0033');
+    drawCircle(x, y, 16, '#FF3333');
+    drawCircle(x, y, 14, '#FF3366');
+    drawCircle(x, y, 12, '#FF6666');
+    drawCircle(x, y, 10, '#FF6699');
+    drawCircle(x, y, 8, '#FF9999');
+    drawCircle(x, y, 6, '#FFCC99');
+
+    //sobreposição final
+    brush.fillStyle = '#FFCC00';
+    brush.beginPath();
+    brush.arc(x + 38, y, 20, 1.1 * Math.PI, 2 * Math.PI);
+    brush.fill();
+
+  }
+
+  drawFlower(200, 200); //central
+  drawFlower(200, 80); //superior
+  drawFlower(117, 117); //superior esquerda
+  drawFlower(80, 200); //lado esquerdo
+  drawFlower(117, 283); // inferior esquerda
+  drawFlower(200, 320); //inferior
+  drawFlower(283, 283); // inferior direita
+  drawFlower(320, 200); //lateral direito
+  drawFlower(283, 117); //superior direita
+
+  drawFlower(112, -5);
+  drawFlower(285, -5);
+  drawFlower(405, 115);
+  drawFlower(405, 285);
+  drawFlower(285, 405);
+  drawFlower(115, 405);
+  drawFlower(-5, 285);
+  drawFlower(-5, 115);
+  drawFlower(30, 30);
+  drawFlower(30, 370);
+  drawFlower(370, 370);
+  drawFlower(370, 30);
+  drawFlower(200, -43);
+  drawFlower(200, 443);
+  drawFlower(-43, 200);
+  drawFlower(443, 200);
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* function drawFlower(x, y) {
+
+      drawCircle(x + 19, y, 10, '#FFCC00');
+      drawCircle(x + 13, y + 13, 10, '#FF6600');
+      drawCircle(x, y + 19, 10, '#FF3366');
+      drawCircle(x - 13, y + 13, 10, '#FF33CC');
+      drawCircle(x - 19, y, 10, '#FF6699');
+      drawCircle(x - 13, y - 13, 10, '#FF9966');
+      drawCircle(x, y - 19, 10, '#FFCC33');
+      drawCircle(x + 13, y - 13, 10, '#FFFF33');
+      drawCircle(x, y, 10, '#FF0000');
+      drawCircle(x, y, 9, '#FF0033');
+      drawCircle(x, y, 8, '#FF3333');
+      drawCircle(x, y, 7, '#FF3366');
+      drawCircle(x, y, 6, '#FF6666');
+      drawCircle(x, y, 5, '#FF6699');
+      drawCircle(x, y, 4, '#FF9999');
+      drawCircle(x, y, 3, '#FFCC99');
+
+      brush.fillStyle = '#FFCC00';
+      brush.beginPath();
+      brush.arc(x + 20, y, 10, 9, 2 * Math.PI);
+      brush.fill();
+
+    }*/
+
+
+
+</script>

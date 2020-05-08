@@ -1,0 +1,27 @@
+<meta charset="UTF-8">
+
+<script>
+  function pulalinha() {
+    document.write("<br>");
+    document.write("<br>");
+  }
+
+  function mostra(frase) {
+    document.write(frase);
+    pulalinha();
+  }
+
+  let nFamiliares = prompt("Quantos familiares?");
+  let totalIdade = 0;
+  let counter = 1;
+
+  while (counter <= nFamiliares) {
+    totalIdade = totalIdade + parseInt(prompt("Digite a idade"));
+    counter = counter + 1;
+  }
+
+  let mediaIdades = totalIdade / nFamiliares;
+
+  mostra("A médida das idades é " + mediaIdades);
+
+</script>

@@ -1,0 +1,44 @@
+<meta charset="UTF-8">
+
+<script>
+  function pulalinha() {
+    document.write("<br>");
+    document.write("<br>");
+  }
+
+  function mostra(frase) {
+    document.write(frase);
+    pulalinha();
+  }
+
+  let maximumAttempts = 3;
+  let currentAttempts = 1;
+
+  let registeredLogin = "alura";
+  let registeredPassword = "alura321";
+
+  while (currentAttempts <= maximumAttempts) {
+
+    let login = prompt("Digite seu Login.");
+    let password = prompt("Digite sua senha.");
+
+    if (registeredLogin == login && registeredPassword == password) {
+      alert("Você está logado, " + registeredLogin);
+      currentAttempts = maximumAttempts;
+
+    } else {
+
+      if (currentAttempts == 3) {
+        alert("Suas tentativas excederam");
+      } else {
+        alert("Login inválido, tente novamente");
+      }
+    }
+    currentAttempts = currentAttempts + 1;
+  }
+
+
+
+
+
+</script>

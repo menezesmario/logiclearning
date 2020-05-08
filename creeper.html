@@ -1,0 +1,31 @@
+<!--  Retângulo 1: 350, 300 (cabeça).
+      Retângulos 2 e 3: 90, 90 (olhos).
+      Retângulo 4: 70, 100 (nariz).
+      Retângulos 5 e 6: 40, 110 (parte da boca).
+!-->
+
+<canvas width="350px" height="300px"></canvas>
+
+<script>
+  let creeper = document.querySelector('canvas');
+  let pincel = creeper.getContext('2d');
+
+  pincel.fillStyle = 'darkgreen';
+  pincel.fillRect(0, 0, 350, 300);
+
+  pincel.fillStyle = 'black';
+  pincel.fillRect(50, 50, 90, 90);
+
+  pincel.fillStyle = 'black';
+  pincel.fillRect(210, 50, 90, 90);
+
+  pincel.fillStyle = 'black';
+  pincel.fillRect(140, 140, 70, 100);
+
+  pincel.fillStyle = 'black';
+  pincel.fillRect(100, 190, 40, 110);
+
+  pincel.fillStyle = 'black';
+  pincel.fillRect(210, 190, 40, 110);
+
+</script>

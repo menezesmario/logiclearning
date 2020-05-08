@@ -1,0 +1,29 @@
+<meta charset="UTF-8">
+
+<script>
+  function pulalinha() {
+    document.write("<br>");
+    document.write("<br>");
+  }
+
+  function mostra(frase) {
+    document.write(frase);
+    pulalinha();
+  }
+
+  let anoCopa = 1930;
+  let count = 1;
+
+  mostra("Teve copa em " + anoCopa);
+
+  while (anoCopa < 2018) {
+    anoCopa = anoCopa + 4;
+    count = count + 1;
+    mostra("Teve copa em " + anoCopa);
+  }
+
+  mostra("Foram " + count + " copas");
+
+
+
+</script>

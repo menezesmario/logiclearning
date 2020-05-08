@@ -1,0 +1,45 @@
+<meta charset="UTF-8">
+
+<script>
+  function pulalinha() {
+    document.write("<br>");
+    document.write("<br>");
+  }
+
+  function mostra(frase) {
+    document.write(frase);
+    pulalinha();
+  }
+
+  let numeroPensado = Math.round(Math.random() * 10);
+  console.log(numeroPensado);
+
+  let counter = 1;
+
+  while (counter <= 3) {
+
+    let chute = parseInt(prompt("Digite seu número:"));
+
+    if (chute == numeroPensado) {
+      alert("Você acertou!");
+      counter = 4;
+    } else {
+      mostra("você errou!")
+    }
+    counter++;
+
+  }
+
+  mostra("FIM");
+
+
+
+
+
+
+
+
+
+
+
+</script>
