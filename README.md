@@ -1,3 +1,3 @@
 # logiclearning
 
-JavaScript and CSS study exercises
+My submissions of exercism with Javascript, for future reference, and also safekeeping.
