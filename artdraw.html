@@ -2,6 +2,8 @@
 
 <canvas width="600" height="400"></canvas>
 
+<button>Reset</button>
+
 <script>
   function drawSquare(x, y, size, color) {
     brush.fillStyle = color;
@@ -26,7 +28,7 @@
     let x = event.pageX - screen.offsetLeft;
     let y = event.pageY - screen.offsetTop;
 
-    if (draw) {
+    if (draw && canDraw(x, y)) {
       drawCircle(x, y, 5, currentColor);
     }
   }
@@ -39,23 +41,17 @@
     draw = false;
   }
 
-  let screen = document.querySelector("canvas");
-  let brush = screen.getContext("2d");
-  brush.fillStyle = "lightgray";
-  brush.fillRect(0, 0, 600, 400);
+  function clearScreen() {
+    brush.clearRect(0, 0, 600, 400);
+  }
 
-  let draw = false;
-  let currentColor = "blue";
-  let xRed = 0;
-  let xGreen = 50;
-  let xBlue = 100;
-  let ySquares = 0;
-  let sizeSquares = 50;
-
-  drawColorPalette();
-  screen.onmousemove = withMouseMove;
-  screen.onmousedown = enableDraw;
-  screen.onmouseup = unableDraw;
+  function canDraw(x, y) {
+    if (x >= 0 && (x < 3 * sizeSquares) & (y >= 0) && y < sizeSquares) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   function select(event) {
     let x = event.pageX - screen.offsetLeft;
@@ -70,5 +66,26 @@
     }
   }
 
+  let screen = document.querySelector("canvas");
+  let brush = screen.getContext("2d");
+  let button = document.querySelector("button");
+  brush.fillStyle = "lightgray";
+  brush.fillRect(0, 0, 600, 400);
+
+  let draw = false;
+  let currentColor = "blue";
+  let xRed = 0;
+  let xGreen = 50;
+  let xBlue = 100;
+
+  let ySquares = 0;
+  let sizeSquares = 50;
+
+  drawColorPalette();
+  screen.onmousemove = withMouseMove;
+  screen.onmousedown = enableDraw;
+  screen.onmouseup = unableDraw;
+
+  //document.button.onclick = clearScreen();
   screen.onclick = select;
 </script>
