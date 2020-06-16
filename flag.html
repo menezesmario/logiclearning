@@ -31,7 +31,32 @@
         brush.fill();
       }
 
-      drawBrazilianFlag();
+      function drawGermanyFlag() {
+        let screen = document.querySelector("canvas");
+        let brush = screen.getContext("2d");
+
+        brush.fillStyle = "black";
+        brush.fillRect(0, 0, 600, 133);
+
+        brush.fillStyle = "red";
+        brush.fillRect(0, 133, 600, 133);
+
+        brush.fillStyle = "yellow";
+        brush.fillRect(0, 266, 600, 133);
+      }
+
+      let showBrazil = true;
+
+      function changeFlag() {
+        if (showBrazil) {
+          drawBrazilianFlag();
+        } else {
+          drawGermanyFlag();
+        }
+        showBrazil = !showBrazil;
+      }
+
+      setInterval(changeFlag, 2000);
     </script>
   </body>
 </html>
