@@ -1,0 +1,66 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+  let screen = document.querySelector("canvas");
+  let brush = screen.getContext("2d");
+  brush.fillStyle = "lightgray";
+  brush.fillRect(0, 0, 600, 400);
+
+  function drawCircle(x, y, radius, color) {
+    brush.fillStyle = color;
+    brush.beginPath();
+    brush.arc(x, y, radius, 0, 2 * Math.PI);
+    brush.fill();
+  }
+
+  function clearScreen() {
+    brush.clearRect(0, 0, 600, 400);
+  }
+
+  let radius = 19;
+  let pulse = 0;
+  let x = 300;
+  let y = 200;
+  let movement = 10;
+
+  function reloadScreen() {
+    clearScreen();
+    if (radius > 30) {
+      pulse = -1; //decrementa diminuir
+    } else if (radius < 20) {
+      pulse = 1; //incrementa aumentar
+    }
+    radius = radius + pulse; // incrementa ou decrementa
+
+    drawCircle(x, y, radius, "blue"); //desenha o círculo
+  }
+
+  function readKeyboard(event) {
+    switch (event.keyCode) {
+      case 37:
+        x = x - movement;
+        break;
+      case 38:
+        y = y - movement;
+        break;
+      case 39:
+        x = x + movement;
+        break;
+      case 40:
+        y = y + movement;
+    }
+
+    /*     if ((event.keyCode = 39)) {
+      x = x + movement;
+    } else if ((event.keyCode = 37)) {
+      x = x - movement;
+    } else if ((event.keyCode = 38)) {
+      y = y - movement;
+    } else if ((event.keyCode = 40)) {
+      y = y + movement;
+    }*/
+  }
+
+  setInterval(reloadScreen, 30); // omitir o '()' para passar a função como parâmetro
+  document.onkeydown = readKeyboard;
+</script>
