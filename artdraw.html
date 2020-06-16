@@ -1,0 +1,74 @@
+<meta charset="utf-8" />
+
+<canvas width="600" height="400"></canvas>
+
+<script>
+  function drawSquare(x, y, size, color) {
+    brush.fillStyle = color;
+    brush.fillRect(x, y, size, size);
+    brush.fill();
+  }
+
+  function drawCircle(x, y, radius, color) {
+    brush.fillStyle = color;
+    brush.beginPath();
+    brush.arc(x, y, radius, 0, 2 * Math.PI);
+    brush.fill();
+  }
+
+  function drawColorPalette() {
+    drawSquare(xRed, ySquares, sizeSquares, "red");
+    drawSquare(xGreen, ySquares, sizeSquares, "green");
+    drawSquare(xBlue, ySquares, sizeSquares, "blue");
+  }
+
+  function withMouseMove(event) {
+    let x = event.pageX - screen.offsetLeft;
+    let y = event.pageY - screen.offsetTop;
+
+    if (draw) {
+      drawCircle(x, y, 5, currentColor);
+    }
+  }
+
+  function enableDraw() {
+    draw = true;
+  }
+
+  function unableDraw() {
+    draw = false;
+  }
+
+  let screen = document.querySelector("canvas");
+  let brush = screen.getContext("2d");
+  brush.fillStyle = "lightgray";
+  brush.fillRect(0, 0, 600, 400);
+
+  let draw = false;
+  let currentColor = "blue";
+  let xRed = 0;
+  let xGreen = 50;
+  let xBlue = 100;
+  let ySquares = 0;
+  let sizeSquares = 50;
+
+  drawColorPalette();
+  screen.onmousemove = withMouseMove;
+  screen.onmousedown = enableDraw;
+  screen.onmouseup = unableDraw;
+
+  function select(event) {
+    let x = event.pageX - screen.offsetLeft;
+    let y = event.pageY - screen.offsetTop;
+
+    if (x > xRed && x < sizeSquares && y < sizeSquares) {
+      currentColor = "red";
+    } else if (x > xGreen && x < xGreen + 50 && y < sizeSquares) {
+      currentColor = "green";
+    } else if (x > xBlue && x < xBlue + 50 && y < sizeSquares) {
+      currentColor = "blue";
+    }
+  }
+
+  screen.onclick = select;
+</script>
