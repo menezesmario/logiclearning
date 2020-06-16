@@ -1,29 +1,34 @@
 <canvas width="600" height="400"></canvas>
 
 <script>
-  let screen = document.querySelector('canvas');
-  let brush = screen.getContext('2d');
+  let screen = document.querySelector("canvas");
+  let brush = screen.getContext("2d");
 
-  brush.fillStyle = 'grey';
+  brush.fillStyle = "grey";
   brush.fillRect(0, 0, 600, 400);
 
-  let colors = ['blue', 'red', 'yellow'];
+  let colors = ["blue", "red", "yellow"];
   let currentColor = 0;
 
-  function drawCircle(event) {
+  let radius = 10;
 
+  function drawCircle(event) {
     let x = event.pageX - screen.offsetLeft;
     let y = event.pageY - screen.offsetTop;
+
+    console.log(x + "," + y);
+
+    if (event.shiftkey) {
+      radius = radius + 10;
+    }
 
     brush.fillStyle = colors[currentColor];
     brush.beginPath();
     brush.arc(x, y, 30, 0, 2 * 3.14);
     brush.fill();
-    console.log(x + ', ' + y);
   }
 
   function changeColor() {
-
     currentColor++;
 
     if (currentColor > 2) {
@@ -34,5 +39,4 @@
 
   screen.onclick = drawCircle;
   screen.oncontextmenu = changeColor;
-
 </script>
