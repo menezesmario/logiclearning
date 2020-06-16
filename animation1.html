@@ -1,0 +1,34 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+  let screen = document.querySelector("canvas");
+  let brush = screen.getContext("2d");
+  brush.fillStyle = "lightgray";
+  brush.fillRect(0, 0, 600, 400);
+
+  function drawCircle(x, y, radius) {
+    brush.fillStyle = "blue";
+    brush.beginPath();
+    brush.arc(x, y, radius, 0, 2 * Math.PI);
+    brush.fill();
+  }
+
+  function clearScreen() {
+    brush.clearRect(0, 0, 600, 400);
+  }
+
+  let x = 20;
+  let direction = 1;
+  function reloadScreen() {
+    clearScreen();
+    if (x == 600) {
+      direction = -1; //decrementa o x pra voltar
+    } else if (x < 0) {
+      direction = 1; //incrementa o x pra ir
+    }
+    drawCircle(x, 20, 10); //desenha o círculo
+    x = x + direction; // incrementa ou decrementa
+  }
+
+  setInterval(reloadScreen, 1); // omitir o '()' para passar a função como parâmetro
+</script>
